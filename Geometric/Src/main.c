@@ -24,8 +24,8 @@
 
 #define PI_180 0.0174532
 
-#define CUBE
-//#define PYRAMID
+//#define CUBE
+#define PYRAMID
 //#define OCTAHEDRON
 
 I2C_HandleTypeDef hi2c1;
