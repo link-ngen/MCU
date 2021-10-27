@@ -46,23 +46,18 @@ void rotateOctahedron(int16_t pitch, int16_t roll, int16_t yaw);
 void main_rotate(void);
 
 //Store cube vertices
-const int8_t cube_vertex[8][3] = {{ -20, -20, 20 	}, { 20, -20, 20 },
-		 	 	 	 	 	{ 20, 20, 20	}, { -20, 20, 20 },
-							{ -20, -20, -20 }, { 20, -20, -20 },
-							{ 20, 20, -20 	}, { -20, 20, -20 }};
+const int8_t cube_vertex[8][3] = { { -20, -20, 20 }, { 20, -20, 20 }, { 20, 20,
+		20 }, { -20, 20, 20 }, { -20, -20, -20 }, { 20, -20, -20 }, { 20, 20,
+		-20 }, { -20, 20, -20 } };
 
-const int8_t pyramid_vertex[5][3] = {	{ 0, -20, 0 },		// 0
-								{ 20, 20, 20 },		// 1
-								{ 20, 20, -20 },	// 2
-								{ -20, 20, -20 },	// 3
-								{ -20, 20, 20 } };	// 4
+const int8_t pyramid_vertex[5][3] = { { 0, -20, 0 },		// 0
+		{ 20, 20, 20 },		// 1
+		{ 20, 20, -20 },	// 2
+		{ -20, 20, -20 },	// 3
+		{ -20, 20, 20 } };	// 4
 
-const int8_t octahedron_vertex[6][3] = {{ 0, 30, 0  },
-								  { -20, 0, 0 },
-								  { 0, 0, 20  },
-								  { 20, 0, 0  },
-								  { 0, 0, -20 },
-								  { 0, -30, 0 }};
+const int8_t octahedron_vertex[6][3] = { { 0, 30, 0 }, { -20, 0, 0 },
+		{ 0, 0, 20 }, { 20, 0, 0 }, { 0, 0, -20 }, { 0, -30, 0 } };
 
 uint16_t wireoctahedron[6][2];
 uint16_t wirepyramid[5][2];
@@ -98,59 +93,95 @@ int main(void)
 
 void drawPyramid(void)
 {
-	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[1][0], wirepyramid[1][1], White);
-	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[2][0], wirepyramid[2][1], White);
-	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[3][0], wirepyramid[3][1], White);
-	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[4][0], wirepyramid[4][1], White);
+	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[1][0],
+			wirepyramid[1][1], White);
+	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[2][0],
+			wirepyramid[2][1], White);
+	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[3][0],
+			wirepyramid[3][1], White);
+	ssd1306_Line(wirepyramid[0][0], wirepyramid[0][1], wirepyramid[4][0],
+			wirepyramid[4][1], White);
 
 	//cross face above
-	ssd1306_Line(wirepyramid[4][0], wirepyramid[4][1], wirepyramid[2][0], wirepyramid[2][1], White);
-	ssd1306_Line(wirepyramid[3][0], wirepyramid[3][1], wirepyramid[1][0], wirepyramid[1][1], White);
+	ssd1306_Line(wirepyramid[4][0], wirepyramid[4][1], wirepyramid[2][0],
+			wirepyramid[2][1], White);
+	ssd1306_Line(wirepyramid[3][0], wirepyramid[3][1], wirepyramid[1][0],
+			wirepyramid[1][1], White);
 
-	ssd1306_Line(wirepyramid[4][0], wirepyramid[4][1], wirepyramid[3][0], wirepyramid[3][1], White);
-	ssd1306_Line(wirepyramid[3][0], wirepyramid[3][1], wirepyramid[2][0], wirepyramid[2][1], White);
-	ssd1306_Line(wirepyramid[2][0], wirepyramid[2][1], wirepyramid[1][0], wirepyramid[1][1], White);
-	ssd1306_Line(wirepyramid[1][0], wirepyramid[1][1], wirepyramid[4][0], wirepyramid[4][1], White);
+	ssd1306_Line(wirepyramid[4][0], wirepyramid[4][1], wirepyramid[3][0],
+			wirepyramid[3][1], White);
+	ssd1306_Line(wirepyramid[3][0], wirepyramid[3][1], wirepyramid[2][0],
+			wirepyramid[2][1], White);
+	ssd1306_Line(wirepyramid[2][0], wirepyramid[2][1], wirepyramid[1][0],
+			wirepyramid[1][1], White);
+	ssd1306_Line(wirepyramid[1][0], wirepyramid[1][1], wirepyramid[4][0],
+			wirepyramid[4][1], White);
 }
 
 void drawCubeVectors(void)
 {
-	ssd1306_Line(wirecube[0][0], wirecube[0][1], wirecube[1][0], wirecube[1][1], White);
-	ssd1306_Line(wirecube[1][0], wirecube[1][1], wirecube[2][0], wirecube[2][1], White);
-	ssd1306_Line(wirecube[2][0], wirecube[2][1], wirecube[3][0], wirecube[3][1], White);
-	ssd1306_Line(wirecube[3][0], wirecube[3][1], wirecube[0][0], wirecube[0][1], White);
+	ssd1306_Line(wirecube[0][0], wirecube[0][1], wirecube[1][0], wirecube[1][1],
+			White);
+	ssd1306_Line(wirecube[1][0], wirecube[1][1], wirecube[2][0], wirecube[2][1],
+			White);
+	ssd1306_Line(wirecube[2][0], wirecube[2][1], wirecube[3][0], wirecube[3][1],
+			White);
+	ssd1306_Line(wirecube[3][0], wirecube[3][1], wirecube[0][0], wirecube[0][1],
+			White);
 
 	//cross face above
-	ssd1306_Line(wirecube[1][0], wirecube[1][1], wirecube[3][0], wirecube[3][1], White);
-	ssd1306_Line(wirecube[0][0], wirecube[0][1], wirecube[2][0], wirecube[2][1], White);
+	ssd1306_Line(wirecube[1][0], wirecube[1][1], wirecube[3][0], wirecube[3][1],
+			White);
+	ssd1306_Line(wirecube[0][0], wirecube[0][1], wirecube[2][0], wirecube[2][1],
+			White);
 
-	ssd1306_Line(wirecube[4][0], wirecube[4][1], wirecube[5][0], wirecube[5][1], White);
-	ssd1306_Line(wirecube[5][0], wirecube[5][1], wirecube[6][0], wirecube[6][1], White);
-	ssd1306_Line(wirecube[6][0], wirecube[6][1], wirecube[7][0], wirecube[7][1], White);
-	ssd1306_Line(wirecube[7][0], wirecube[7][1], wirecube[4][0], wirecube[4][1], White);
+	ssd1306_Line(wirecube[4][0], wirecube[4][1], wirecube[5][0], wirecube[5][1],
+			White);
+	ssd1306_Line(wirecube[5][0], wirecube[5][1], wirecube[6][0], wirecube[6][1],
+			White);
+	ssd1306_Line(wirecube[6][0], wirecube[6][1], wirecube[7][0], wirecube[7][1],
+			White);
+	ssd1306_Line(wirecube[7][0], wirecube[7][1], wirecube[4][0], wirecube[4][1],
+			White);
 
-	ssd1306_Line(wirecube[0][0], wirecube[0][1], wirecube[4][0], wirecube[4][1], White);
-	ssd1306_Line(wirecube[1][0], wirecube[1][1], wirecube[5][0], wirecube[5][1], White);
-	ssd1306_Line(wirecube[2][0], wirecube[2][1], wirecube[6][0], wirecube[6][1], White);
-	ssd1306_Line(wirecube[3][0], wirecube[3][1], wirecube[7][0], wirecube[7][1], White);
+	ssd1306_Line(wirecube[0][0], wirecube[0][1], wirecube[4][0], wirecube[4][1],
+			White);
+	ssd1306_Line(wirecube[1][0], wirecube[1][1], wirecube[5][0], wirecube[5][1],
+			White);
+	ssd1306_Line(wirecube[2][0], wirecube[2][1], wirecube[6][0], wirecube[6][1],
+			White);
+	ssd1306_Line(wirecube[3][0], wirecube[3][1], wirecube[7][0], wirecube[7][1],
+			White);
 }
 
 void drawOctahedron(void)
 {
-	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1], wireoctahedron[1][0], wireoctahedron[1][1], White);
-	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1], wireoctahedron[2][0], wireoctahedron[2][1], White);
-	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1], wireoctahedron[3][0], wireoctahedron[3][1], White);
-	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1], wireoctahedron[4][0], wireoctahedron[4][1], White);
+	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1],
+			wireoctahedron[1][0], wireoctahedron[1][1], White);
+	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1],
+			wireoctahedron[2][0], wireoctahedron[2][1], White);
+	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1],
+			wireoctahedron[3][0], wireoctahedron[3][1], White);
+	ssd1306_Line(wireoctahedron[0][0], wireoctahedron[0][1],
+			wireoctahedron[4][0], wireoctahedron[4][1], White);
 
-	ssd1306_Line(wireoctahedron[1][0], wireoctahedron[1][1], wireoctahedron[2][0], wireoctahedron[2][1], White);
-	ssd1306_Line(wireoctahedron[2][0], wireoctahedron[2][1], wireoctahedron[3][0], wireoctahedron[3][1], White);
-	ssd1306_Line(wireoctahedron[3][0], wireoctahedron[3][1], wireoctahedron[4][0], wireoctahedron[4][1], White);
-	ssd1306_Line(wireoctahedron[4][0], wireoctahedron[4][1], wireoctahedron[1][0], wireoctahedron[1][1], White);
+	ssd1306_Line(wireoctahedron[1][0], wireoctahedron[1][1],
+			wireoctahedron[2][0], wireoctahedron[2][1], White);
+	ssd1306_Line(wireoctahedron[2][0], wireoctahedron[2][1],
+			wireoctahedron[3][0], wireoctahedron[3][1], White);
+	ssd1306_Line(wireoctahedron[3][0], wireoctahedron[3][1],
+			wireoctahedron[4][0], wireoctahedron[4][1], White);
+	ssd1306_Line(wireoctahedron[4][0], wireoctahedron[4][1],
+			wireoctahedron[1][0], wireoctahedron[1][1], White);
 
-	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1], wireoctahedron[1][0], wireoctahedron[1][1], White);
-	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1], wireoctahedron[2][0], wireoctahedron[2][1], White);
-	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1], wireoctahedron[3][0], wireoctahedron[3][1], White);
-	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1], wireoctahedron[4][0], wireoctahedron[4][1], White);
+	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1],
+			wireoctahedron[1][0], wireoctahedron[1][1], White);
+	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1],
+			wireoctahedron[2][0], wireoctahedron[2][1], White);
+	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1],
+			wireoctahedron[3][0], wireoctahedron[3][1], White);
+	ssd1306_Line(wireoctahedron[5][0], wireoctahedron[5][1],
+			wireoctahedron[4][0], wireoctahedron[4][1], White);
 }
 
 void rotateCube(int16_t pitch, int16_t roll, int16_t yaw)
@@ -164,8 +195,10 @@ void rotateCube(int16_t pitch, int16_t roll, int16_t yaw)
 	for (int i = 0; i < 8; ++i)
 	{
 		//rotateY
-		rotz = cube_vertex[i][2] * cos(pitchRad) - cube_vertex[i][0] * sin(pitchRad);
-		rotx = cube_vertex[i][2] * sin(pitchRad) + cube_vertex[i][0] * cos(pitchRad);
+		rotz = cube_vertex[i][2] * cos(pitchRad)
+				- cube_vertex[i][0] * sin(pitchRad);
+		rotx = cube_vertex[i][2] * sin(pitchRad)
+				+ cube_vertex[i][0] * cos(pitchRad);
 		roty = cube_vertex[i][1];
 
 		//rotateX
@@ -200,8 +233,10 @@ void rotatePyramid(int16_t pitch, int16_t roll, int16_t yaw)
 	for (int i = 0; i < 5; ++i)
 	{
 		//rotateY
-		rotz = pyramid_vertex[i][2] * cos(pitchRad) - pyramid_vertex[i][0] * sin(pitchRad);
-		rotx = pyramid_vertex[i][2] * sin(pitchRad) + pyramid_vertex[i][0] * cos(pitchRad);
+		rotz = pyramid_vertex[i][2] * cos(pitchRad)
+				- pyramid_vertex[i][0] * sin(pitchRad);
+		rotx = pyramid_vertex[i][2] * sin(pitchRad)
+				+ pyramid_vertex[i][0] * cos(pitchRad);
 		roty = pyramid_vertex[i][1];
 
 		//rotateX
@@ -235,8 +270,10 @@ void rotateOctahedron(int16_t pitch, int16_t roll, int16_t yaw)
 	for (int i = 0; i < 6; ++i)
 	{
 		//rotateY
-		rotz = octahedron_vertex[i][2] * cos(pitchRad) - octahedron_vertex[i][0] * sin(pitchRad);
-		rotx = octahedron_vertex[i][2] * sin(pitchRad) + octahedron_vertex[i][0] * cos(pitchRad);
+		rotz = octahedron_vertex[i][2] * cos(pitchRad)
+				- octahedron_vertex[i][0] * sin(pitchRad);
+		rotx = octahedron_vertex[i][2] * sin(pitchRad)
+				+ octahedron_vertex[i][0] * cos(pitchRad);
 		roty = octahedron_vertex[i][1];
 
 		//rotateX
@@ -258,7 +295,6 @@ void rotateOctahedron(int16_t pitch, int16_t roll, int16_t yaw)
 		wireoctahedron[i][1] = rotyyy;
 	}
 }
-
 
 void main_rotate(void)
 {

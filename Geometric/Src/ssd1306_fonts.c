@@ -1,4 +1,3 @@
-
 #include "ssd1306_fonts.h"
 
 static const uint16_t Font7x10 [] = {

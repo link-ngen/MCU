@@ -1,10 +1,3 @@
-/*
- * ssd1306_gfx.c
- *
- *  Created on: 05.07.2020
- *      Author: nguyen
- */
-
 #include "ssd1306_gfx.h"
 
 static void ssd1306_GFX_DrawFastVLine(uint8_t x, uint8_t y, uint8_t h,
