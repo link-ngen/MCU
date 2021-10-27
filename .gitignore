@@ -8,4 +8,5 @@ NUCLEO-F401RE.xml
 *.ld
 RemoteSystemsTempFiles/
 .git/
-**/metadata/*
+/metadata/
+
