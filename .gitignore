@@ -8,6 +8,9 @@ NUCLEO-F401RE.xml
 *.ld
 RemoteSystemsTempFiles/
 .git/
+**/*/.cproject
+**/*/.mxproject
+**/*/.project
 ######################################
 .mylyn/.taskListIndex/
 *.log
