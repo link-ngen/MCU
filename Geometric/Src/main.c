@@ -303,15 +303,13 @@ void main_rotate(void)
 	{
 		angle = 0;
 	}
-#ifdef CUBE
+#if defined(CUBE)
 	rotateCube(angle, angle, angle);
 	drawCubeVectors();
-#endif
-#ifdef PYRAMID
+#elif defined(PYRAMID)
 	rotatePyramid(angle, angle, angle);
 	drawPyramid();
-#endif
-#ifdef OCTAHEDRON
+#elif defined(OCTAHEDRON)
 	drawOctahedron();
 	rotateOctahedron(angle, 0, 0);
 #endif
